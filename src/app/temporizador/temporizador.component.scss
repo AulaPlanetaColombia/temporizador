@@ -1,0 +1,51 @@
+#pantalla {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    #barra {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        height: 16.66667%;
+        #logo {
+            height: 40%;
+            width: auto;
+            margin: 2rem 0 0 2rem;
+        }
+    }
+    #cuerpo {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 83.33333%;
+        #temporizador {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+            height: 60%;
+            mat-form-field {
+                font-size: 8rem;
+                width: 20%;
+                input.mat-input-element {
+                    text-align: center;
+                }
+            }
+        }
+        #acciones {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            height: 40%;
+            button {
+                margin: 2rem;
+            }
+        }
+    }
+}
