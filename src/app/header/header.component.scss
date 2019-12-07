@@ -1,0 +1,33 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(45vh - 4rem);
+    background-image: url('../../assets/img/debate.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 40%;
+    background-color: #292929;
+    background-blend-mode: overlay;
+    margin: 0;
+    padding: 2rem 5rem;
+    .titulo {
+        font-size: 4rem;
+        color: #fff;
+        width: 100%;
+        height: 6rem;
+    }
+    .logos {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        height: 2rem;
+        .logo-ap {
+            max-height: 100%;
+            width: auto;
+            margin-right: 1rem;
+        }
+    }
+}

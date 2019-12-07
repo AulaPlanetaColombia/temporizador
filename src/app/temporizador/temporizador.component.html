@@ -1,44 +1,28 @@
-<div id="pantalla">
-    <div id="barra">
-        <img id="logo" src="assets/img/logo.svg">
+<div class="cuerpo">
+    <div class="temporizador">
+        <div class="tiempo" [ngClass]="{'negativo':(conteo < 0)?true:false}">{{minutos}} : {{segundos}}</div>
     </div>
-    <div id="cuerpo">
-        <div id="temporizador">
-            <mat-form-field id="horas">
-                <input type="number" matInput max="99" min="0" placeholder="Horas" [(ngModel)]="horas" (blur)="ajusta()">
-            </mat-form-field>
-            <mat-form-field id="minutos">
-                <input type="number" matInput max="59" min="0" placeholder="Minutos" [(ngModel)]="minutos" (blur)="ajusta()">
-            </mat-form-field>
-            <mat-form-field id="segundos">
-                <input type="number" matInput max="59" min="0" placeholder="Segundos" [(ngModel)]="segundos" (blur)="ajusta()">
-            </mat-form-field>
-            <mat-form-field id="centesimas">
-                <input type="number" matInput max="99" min="0" placeholder="Centésimas" [(ngModel)]="centesimas" (blur)="ajusta()">
-            </mat-form-field>
+    <div class="acciones">
+        <div class="iniciar" *ngIf="paso === 0">
+            <button mat-fab color="primary" aria-label="INICIAR" (click)="inicia()">
+                <mat-icon>play_arrow</mat-icon>
+            </button>
         </div>
-        <div id="acciones">
-            <div id="iniciar" *ngIf="paso === 0">
-                <button mat-fab color="primary" aria-label="INICIAR" (click)="inicia()">
-                    <mat-icon>play_arrow</mat-icon>
-                </button>
-            </div>
-            <div id="andando" *ngIf="paso === 1">
-                <button mat-fab color="primary" aria-label="PAUSAR" (click)="pausa()">
-                    <mat-icon>pause</mat-icon>
-                </button>
-                <button mat-fab color="warn" aria-label="RESTABLECER" (click)="restablece()">
-                    <mat-icon>clear</mat-icon>
-                </button>
-            </div>
-            <div id="pausa" *ngIf="paso === 2">
-                <button mat-fab color="primary" aria-label="CONTINUAR" (click)="inicia()">
-                    <mat-icon>play_arrow</mat-icon>
-                </button>
-                <button mat-fab color="warn" aria-label="RESTABLECER" (click)="restablece()">
-                    <mat-icon>clear</mat-icon>
-                </button>
-            </div>
+        <div class="andando" *ngIf="paso === 1">
+            <button mat-fab color="primary" aria-label="PAUSAR" (click)="pausa()">
+                <mat-icon>pause</mat-icon>
+            </button>
+            <button mat-fab color="warn" aria-label="RESTABLECER" (click)="restablece()">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+        <div class="pausa" *ngIf="paso === 2">
+            <button mat-fab color="primary" aria-label="CONTINUAR" (click)="inicia()">
+                <mat-icon>play_arrow</mat-icon>
+            </button>
+            <button mat-fab color="warn" aria-label="RESTABLECER" (click)="restablece()">
+                <mat-icon>clear</mat-icon>
+            </button>
         </div>
     </div>
 </div>

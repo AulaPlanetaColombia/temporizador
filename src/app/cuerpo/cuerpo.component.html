@@ -1,0 +1,24 @@
+<div class="cuerpo">
+    <mat-card class="tarjeta">
+        <mat-card-content>
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let turno of turnos; index as i; first as primero" [expanded]="primero">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <div class="numero"><span>{{i + 1}}</span></div>
+                            <div class="titulo">{{turno.nombre}}</div>
+                        </mat-panel-title>
+                        <mat-panel-description>{{tipoTurno[turno.tipoTurno]}}</mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <temporizador [tiempo]="turno.tiempo" [numero]="i" (final)="tiempoFinal($event)"></temporizador>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Resumen</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <resumen [resumen]="resumen"></resumen>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</div>
