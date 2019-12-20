@@ -1,5 +1,10 @@
 <div class="cuerpo">
     <mat-card class="tarjeta">
+        <!--mat-card-header class="encabezado">
+            <button mat-icon-button aria-label="Configurar los temporizadores" (click)="abreModal()>
+                <mat-icon>settings_applications</mat-icon>
+            </button>
+        </mat-card-header-->
         <mat-card-content>
             <mat-accordion>
                 <mat-expansion-panel *ngFor="let turno of turnos; index as i; first as primero" [expanded]="primero">

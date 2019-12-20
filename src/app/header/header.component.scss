@@ -1,33 +1,67 @@
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: calc(45vh - 4rem);
-    background-image: url('../../assets/img/debate.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 40%;
-    background-color: #292929;
-    background-blend-mode: overlay;
     margin: 0;
-    padding: 2rem 5rem;
+    @media (max-width: 768px) { // Tablets
+        position: relative;
+        padding-bottom: 2rem;
+    }
+    @media (min-width: 769px) { // Desktop
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 45vh;
+        .titulo {
+            max-height: 7vh;
+        }
+    }
+    background-color: #223656;
     .titulo {
-        font-size: 4rem;
+        font-size: 6.5vh;
         color: #fff;
-        width: 100%;
-        height: 6rem;
+        margin: 10px 0 30px;
+        text-align: center;
     }
     .logos {
+        height: calc(100% - 7vh - 40px);
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        width: 100%;
-        height: 2rem;
-        .logo-ap {
-            max-height: 100%;
-            width: auto;
-            margin-right: 1rem;
+        justify-content: space-between;
+        align-items: center;
+        .columna {
+            display: flex;
+            height: 100%;
+        }
+        @media (max-width: 768px) { // Tablets
+            .columna {
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                img {
+                    width: 42.5%;
+                    height: auto;
+                    &.logo_ap {
+                        width: 47.5%;
+                    }
+                }
+            }
+        }
+        @media (min-width: 769px) { // Desktop
+            .columna {
+                width: 20%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 80%;
+                    height: auto;
+                    &:first-of-type {
+                        margin-bottom: 2rem;
+                    }
+                    &.logo_ap {
+                        width: 90%;
+                    }
+                }
+            }
         }
     }
 }
