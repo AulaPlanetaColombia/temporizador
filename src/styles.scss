@@ -8,3 +8,37 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-form-field-label-wrapper {
     font-size: 2rem;
 }
+.conf-dialog {
+    .mat-dialog-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .conf-temp {
+            min-width: 15rem;
+            padding: 0 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .campos {
+                display: inline-block;
+                .mat-form-field-wrapper {
+                    .mat-form-field-infix {
+                        width: 60px;
+                        .campo {
+                            text-align: center;
+                            font-size: 1.5rem;
+                        } 
+                        .mat-form-field-label-wrapper {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .mat-dialog-actions {
+        justify-content: flex-end;
+    }
+}

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { timer } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { timer } from 'rxjs';
     templateUrl: './temporizador.component.html',
     styleUrls: ['./temporizador.component.scss']
 })
-export class TemporizadorComponent implements OnInit {
+export class TemporizadorComponent implements OnInit, OnChanges {
     @Input() tiempo:number;
     @Input() numero:number;
     @Output() final = new EventEmitter<any>();
@@ -18,6 +18,10 @@ export class TemporizadorComponent implements OnInit {
     conteo:number;
     constructor(private tiempoFuera:MatSnackBar) {}
     ngOnInit() {
+        this.conteo = this.tiempo;
+        this.calculaTiempo();
+    }
+    ngOnChanges(changes:SimpleChanges) {
         this.conteo = this.tiempo;
         this.calculaTiempo();
     }

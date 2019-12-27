@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'cuerpo',
@@ -7,20 +8,19 @@ import { DataService } from '../data.service';
     styleUrls: ['./cuerpo.component.scss']
 })
 export class CuerpoComponent {
-    turnos:any/* = [
-        {'nombre': 'Exposición Inicial', 'tiempo': 240, 'tipoTurno': 'afavor'}, // 4 minutos
-        {'nombre': 'Exposición Inicial', 'tiempo': 240, 'tipoTurno': 'encontra'}, // 4 minutos
-        {'nombre': 'Refutación 1', 'tiempo': 300, 'tipoTurno': 'afavor'}, // 5 minutos
-        {'nombre': 'Refutación 1', 'tiempo': 300, 'tipoTurno': 'encontra'}, // 5 minutos
-        {'nombre': 'Refutación 2', 'tiempo': 300, 'tipoTurno': 'afavor'}, // 5 minutos
-        {'nombre': 'Refutación 2', 'tiempo': 300, 'tipoTurno': 'encontra'}, // 5 minutos
-        {'nombre': 'Conclusión', 'tiempo': 180, 'tipoTurno': 'encontra'}, // 3 minutos
-        {'nombre': 'Conclusión', 'tiempo': 180, 'tipoTurno': 'afavor'} // 3 minutos
-    ]*/;
+    turnos:any;
     tipoTurno:any = {'afavor': 'A Favor', 'encontra': 'En Contra'};
     resumen:Array<any> = [];
-    constructor(data:DataService) {
-        data.get().subscribe(res => this.turnos = res);
+    valores:Array<any> = [];
+    constructor(private data:DataService, private dialog:MatDialog) {
+        data.get().subscribe(res => {
+            this.turnos = res;
+            this.turnos.forEach((val,i) => {
+                let minutos:number = Math.floor(val.tiempo / 60);
+                let segundos:number = val.tiempo - (minutos * 60);
+                this.valores[i] = {'min':minutos,'seg':segundos};
+            });
+        });
     }
     tiempoFinal(ev:any) {
         this.resumen[ev.num] = {
@@ -34,8 +34,16 @@ export class CuerpoComponent {
         let segundos:number = segs - (minutos * 60);
         return this.dosDigitos(minutos) + ':' + this.dosDigitos(segundos);
     }
-    abreModal() {
-        // Crea diálogo para configurar los tiempos
+    abreModal(modal) {
+        this.dialog.open(modal, {maxWidth: '40rem',panelClass: 'conf-dialog'});
+    }
+    cierraModal() {
+        this.dialog.closeAll();
+    }
+    ajustaTiempo() {
+        this.valores.forEach((val,i) => {
+            this.turnos[i].tiempo = (val.min * 60) + val.seg;
+        });
     }
     dosDigitos(num:number) {
         if (num < 10) {
