@@ -4,11 +4,11 @@
     }
     @media (min-width: 769px) { // Desktop
         position: fixed;
-        top: 15vh;
+        top: 24vh;
         width: 60%;
         margin-left: 20%;
         .tarjeta {
-            height: 80vh;
+            height: 70vh;
             overflow-y: scroll;
         }
     }

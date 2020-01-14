@@ -1,7 +1,16 @@
 <div class="cuerpo">
     <mat-card class="tarjeta">
         <mat-card-header class="encabezado">
-            <button mat-icon-button aria-label="Configurar los temporizadores" (click)="abreModal(modal)">
+            <button mat-icon-button
+                    aria-label="Añadir un temporizador"
+                    matTooltip="Añadir un temporizador"
+                    (click)="abreModal(adicionar)">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <button mat-icon-button
+                    aria-label="Configurar los temporizadores"
+                    matTooltip="Configurar los temporizadores"
+                    (click)="abreModal(modal)">
                 <mat-icon>settings_applications</mat-icon>
             </button>
         </mat-card-header>
@@ -27,32 +36,87 @@
         </mat-card-content>
     </mat-card>
 </div>
+<ng-template #adicionar>
+    <h1 mat-dialog-title>Adicionar un temporizador</h1>
+    <div mat-dialog-content class="dialog-add">
+        <mat-form-field>
+            <input matInput placeholder="Nombre" type="text" [(ngModel)]="nuevoTemp.nombre">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Postura</mat-label>
+            <mat-select [(ngModel)]="nuevoTemp.tipoTurno">
+                <mat-option value="afavor">A Favor</mat-option>
+                <mat-option value="encontra">En Contra</mat-option>
+                <mat-option value="neutro">Sin postura</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="tiempo">
+            <mat-form-field>
+                <input matInput placeholder="Minutos" type="number" [(ngModel)]="nuevoTemp.min">
+            </mat-form-field>
+            <span class="separador">:</span>
+            <mat-form-field>
+                <input matInput max="59" placeholder="Segundos" type="number" [(ngModel)]="nuevoTemp.seg">
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="adiciona()">Crear</button>
+    </div>
+</ng-template>
 <ng-template #modal>
     <h1 mat-dialog-title>Configurar temporizadores</h1>
     <div mat-dialog-content>
-        <div class="conf-temp" *ngFor="let val of valores; index as i; first as primero" [class.mat-elevation-z2]="true">
-            <h4>{{(i + 1) + ": " + turnos[i].nombre + ' - ' + tipoTurno[turnos[i].tipoTurno]}}</h4>
-            <div class="campos">
-                <mat-form-field>
-                    <input class="campo"
-                           type="number"
-                           placeholder="Minutos"
-                           matInput
-                           [(ngModel)]="valores[i].min"
-                           (change)="ajustaTiempo()">
-                </mat-form-field>
-                :
-                <mat-form-field>
-                    <input class="campo"
-                           max="59"
-                           type="number"
-                           placeholder="Segundos"
-                           matInput
-                           [(ngModel)]="valores[i].seg"
-                           (change)="ajustaTiempo()">
-                </mat-form-field>
-            </div>
-        </div>
+        <div cdkDropList class="drag-drop-list" (cdkDropListDropped)="suelta($event)">
+            <div class="conf-temp" *ngFor="let val of valores; index as i" cdkDrag>
+                <button class="btn-drag" mat-icon-button aria-label="Ordenar los temporizadores">
+                    <mat-icon>drag_indicator</mat-icon>
+                </button>
+                <h4 class="nombre-temp">
+                    <span class="numero">{{(i + 1) + "º. "}}</span>
+                    <span class="nombre">{{turnos[i]!.nombre}}</span>
+                    <!--mat-form-field>
+                        <input matInput type="text" [(ngModel)]="turnos[i]!.nombre">
+                    </mat-form-field-->
+                    -
+                    <span class="tipo-turno">{{tipoTurno[turnos[i]!.tipoTurno]}}</span>
+                    <!--mat-form-field>
+                        <mat-select [(ngModel)]="tipoTurno[turnos[i]!.tipoTurno]">
+                            <mat-option value="afavor">A Favor</mat-option>
+                            <mat-option value="encontra">En Contra</mat-option>
+                            <mat-option value="neutro">Sin postura</mat-option>
+                        </mat-select>
+                    </mat-form-field-->
+                </h4>
+                <div class="campos">
+                    <mat-form-field>
+                        <input class="campo"
+                               type="number"
+                               placeholder="Minutos"
+                               matInput
+                               [(ngModel)]="valores[i].min"
+                               (change)="ajustaTiempo()">
+                    </mat-form-field>
+                    :
+                    <mat-form-field>
+                        <input class="campo"
+                               max="59"
+                               type="number"
+                               placeholder="Segundos"
+                               matInput
+                               [(ngModel)]="valores[i].seg"
+                               (change)="ajustaTiempo()">
+                    </mat-form-field>
+                </div><!-- /.campos -->
+                <button class="btn-delete"
+                        mat-icon-button
+                        matTooltip="Eliminar este temporizador"
+                        aria-label="Eliminar este temporizador"
+                        (click)="elimina(i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div><!-- /.conf-temp -->
+        </div><!-- /cdkDropList -->
     </div>
     <div mat-dialog-actions>
         <button mat-raised-button color="primary" (click)="cierraModal()">Cerrar</button>

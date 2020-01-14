@@ -11,6 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TemporizadorComponent } from './temporizador/temporizador.component';
 import { HeaderComponent } from './header/header.component';
 import { CuerpoComponent } from './cuerpo/cuerpo.component';
@@ -35,7 +38,10 @@ import { ResumenComponent } from './resumen/resumen.component';
         MatCardModule,
         MatExpansionModule,
         MatSnackBarModule,
-        MatDialogModule
+        MatDialogModule,
+        MatTooltipModule,
+        MatSelectModule,
+        DragDropModule
     ],
     providers: [],
     bootstrap: [AppComponent]

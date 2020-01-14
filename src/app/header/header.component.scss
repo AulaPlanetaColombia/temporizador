@@ -4,63 +4,54 @@
     @media (max-width: 768px) { // Tablets
         position: relative;
         padding-bottom: 2rem;
+        .titulo {
+            font-size: 5vh;
+        }
+        .superior {
+            padding-top: 0;
+        }
     }
     @media (min-width: 769px) { // Desktop
         position: fixed;
         top: 0;
         left: 0;
-        height: 45vh;
+        height: 40vh;
         .titulo {
-            max-height: 7vh;
+            font-size: 5.5vh;
+            padding-top: 2vh;
+        }
+        .superior {
+            margin-top: 3vh;
         }
     }
     background-color: #223656;
     .titulo {
-        font-size: 6.5vh;
         color: #fff;
-        margin: 10px 0 30px;
+        margin: 0 auto;
         text-align: center;
     }
-    .logos {
-        height: calc(100% - 7vh - 40px);
+    .fila {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        .columna {
-            display: flex;
-            height: 100%;
+        img {
+            margin: 0 3vw;
         }
-        @media (max-width: 768px) { // Tablets
-            .columna {
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-                img {
-                    width: 42.5%;
-                    height: auto;
-                    &.logo_ap {
-                        width: 47.5%;
-                    }
-                }
+        &.superior {
+            height: 10vh;
+            background-color: #fff;
+            img {
+                width: 17vw;
             }
         }
-        @media (min-width: 769px) { // Desktop
-            .columna {
-                width: 20%;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                img {
-                    width: 80%;
-                    height: auto;
-                    &:first-of-type {
-                        margin-bottom: 2rem;
-                    }
-                    &.logo_ap {
-                        width: 90%;
-                    }
-                }
+        &.inferior {
+            height: 7vh;
+            margin-top: 5vh;
+            border-top: 1px solid #fff;
+            padding-top: 3vh;
+            img {
+                width: 14vw;
             }
         }
     }
