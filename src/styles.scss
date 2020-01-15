@@ -37,7 +37,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         flex-wrap: wrap;
         justify-content: space-between;
         margin-right: 0;
-        min-width: 40vw;
+        @media (max-width: 768px) { // Tablets
+            min-width: 70vw;
+        }
+        @media (min-width: 769px) { // Desktop
+            min-width: 40vw;
+        }
     }
     .mat-dialog-actions {
         justify-content: flex-end;
