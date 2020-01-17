@@ -16,6 +16,7 @@ export class TemporizadorComponent implements OnInit, OnChanges {
     segundos:string;
     paso:number = 0;
     conteo:number;
+    crono:Boolean;
     constructor(private tiempoFuera:MatSnackBar) {}
     ngOnInit() {
         this.conteo = this.tiempo;
@@ -26,6 +27,9 @@ export class TemporizadorComponent implements OnInit, OnChanges {
         this.calculaTiempo();
     }
     calculaTiempo() {
+        if (this.tiempo === 0) {
+            this.crono = true;
+        }
         this.minutos = this.dosDigitos(Math.floor(Math.abs(this.conteo) / 60));
         this.segundos = this.dosDigitos(Math.abs(this.conteo) - (Number(this.minutos) * 60));
         this.final.emit({'num':this.numero, 'final':Math.abs(this.tiempo - this.conteo)});
@@ -34,11 +38,11 @@ export class TemporizadorComponent implements OnInit, OnChanges {
         this.paso = 1;
         const fuente = timer(0,1000);
         this.sec = fuente.subscribe(mil => {
-            if (this.conteo === 0) {
+            if (this.conteo === 0 && !this.crono) {
                 this.tiempoFuera.open('¡Tiempo fuera! ⏰','Cerrar',{duration:5000});
             }
             this.calculaTiempo();
-            this.conteo--;
+            this.crono ? this.conteo++ : this.conteo--;
         });
     }
     pausa() {

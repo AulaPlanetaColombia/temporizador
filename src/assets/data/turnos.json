@@ -1,42 +1,17 @@
 [
     {
-        "nombre": "Exposición Inicial",
-        "tiempo": 240,
-        "tipoTurno": "afavor"
-    },
-    {
-        "nombre": "Exposición Inicial",
-        "tiempo": 240,
-        "tipoTurno": "encontra"
-    },
-    {
-        "nombre": "Refutación 1",
+        "nombre": "Temporizador",
         "tiempo": 300,
-        "tipoTurno": "afavor"
+        "tipoTurno": "5 minutos"
     },
     {
-        "nombre": "Refutación 1",
-        "tiempo": 300,
-        "tipoTurno": "encontra"
+        "nombre": "Temporizador",
+        "tiempo": 600,
+        "tipoTurno": "10 minutos"
     },
     {
-        "nombre": "Refutación 2",
-        "tiempo": 300,
-        "tipoTurno": "afavor"
-    },
-    {
-        "nombre": "Refutación 2",
-        "tiempo": 300,
-        "tipoTurno": "encontra"
-    },
-    {
-        "nombre": "Conclusión",
-        "tiempo": 180,
-        "tipoTurno": "encontra"
-    },
-    {
-        "nombre": "Conclusión",
-        "tiempo": 180,
-        "tipoTurno": "afavor"
+        "nombre": "Cronómetro",
+        "tiempo": 0,
+        "tipoTurno": ""
     }
 ]

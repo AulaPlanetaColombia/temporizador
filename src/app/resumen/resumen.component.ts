@@ -7,5 +7,4 @@ import { Component, Input } from '@angular/core';
 })
 export class ResumenComponent {
     @Input() resumen:Array<string>;
-    constructor() {}
 }

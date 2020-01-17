@@ -10,10 +10,10 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class CuerpoComponent {
     turnos:any;
-    tipoTurno:any = {'afavor': 'A Favor', 'encontra': 'En Contra', 'neutro': ''};
+    //tipoTurno:any = {'afavor': 'A Favor', 'encontra': 'En Contra', 'neutro': ''};
     resumen:Array<any> = [];
     valores:Array<any> = [];
-    nuevoTemp:any = {'nombre':'','min':0,'seg':0,'tipoTurno':'neutro'};
+    nuevoTemp:any = {'nombre':'','min':0,'seg':0,'tipoTurno':''};
     constructor(private data:DataService, private dialog:MatDialog) {
         data.get().subscribe(res => {
             this.turnos = res;
@@ -33,7 +33,7 @@ export class CuerpoComponent {
     generaResumen(ev:any) {
         this.resumen[ev.num] = {
             'turno': this.turnos[ev.num].nombre,
-            'postura': this.tipoTurno[this.turnos[ev.num].tipoTurno],
+            'postura': this.turnos[ev.num].tipoTurno,
             'tiempo':this.convierteTiempo(ev.final)
         };
         this.resumen.forEach((val:any,num:number) => {
@@ -83,7 +83,7 @@ export class CuerpoComponent {
         };
         this.turnos.unshift(nuevo);
         this.generaValores();
-        this.nuevoTemp = {'nombre':'','min':0,'seg':0,'tipoTurno':'neutro'};
+        this.nuevoTemp = {'nombre':'','min':0,'seg':0,'tipoTurno':''};
         this.cierraModal()
     }
     ajustaTiempo() {

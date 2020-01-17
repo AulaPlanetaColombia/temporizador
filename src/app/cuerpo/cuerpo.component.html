@@ -22,7 +22,7 @@
                             <div class="numero"><span>{{i + 1}}</span></div>
                             <div class="titulo">{{turno.nombre}}</div>
                         </mat-panel-title>
-                        <mat-panel-description>{{tipoTurno[turno.tipoTurno]}}</mat-panel-description>
+                        <mat-panel-description>{{turno.tipoTurno}}</mat-panel-description>
                     </mat-expansion-panel-header>
                     <temporizador [tiempo]="turno.tiempo" [numero]="i" (final)="tiempoFinal($event)"></temporizador>
                 </mat-expansion-panel>
@@ -40,15 +40,10 @@
     <h1 mat-dialog-title>Adicionar un temporizador</h1>
     <div mat-dialog-content class="dialog-add">
         <mat-form-field>
-            <input matInput placeholder="Nombre" type="text" [(ngModel)]="nuevoTemp.nombre">
+            <input matInput placeholder="Tipo" type="text" [(ngModel)]="nuevoTemp.nombre">
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Postura</mat-label>
-            <mat-select [(ngModel)]="nuevoTemp.tipoTurno">
-                <mat-option value="afavor">A Favor</mat-option>
-                <mat-option value="encontra">En Contra</mat-option>
-                <mat-option value="neutro">Sin postura</mat-option>
-            </mat-select>
+            <input matInput placeholder="Descripción" type="text" [(ngModel)]="nuevoTemp.tipoTurno">
         </mat-form-field>
         <div class="tiempo">
             <mat-form-field>
@@ -59,6 +54,7 @@
                 <input matInput max="59" placeholder="Segundos" type="number" [(ngModel)]="nuevoTemp.seg">
             </mat-form-field>
         </div>
+        <span class="tip">Deja los minutos y segundos en 0, para crear un cronómetro en lugar de un temporizador.</span>
     </div>
     <div mat-dialog-actions>
         <button mat-raised-button color="primary" (click)="adiciona()">Crear</button>
@@ -75,18 +71,8 @@
                 <h4 class="nombre-temp">
                     <span class="numero">{{(i + 1) + "º. "}}</span>
                     <span class="nombre">{{turnos[i]!.nombre}}</span>
-                    <!--mat-form-field>
-                        <input matInput type="text" [(ngModel)]="turnos[i]!.nombre">
-                    </mat-form-field-->
                     -
-                    <span class="tipo-turno">{{tipoTurno[turnos[i]!.tipoTurno]}}</span>
-                    <!--mat-form-field>
-                        <mat-select [(ngModel)]="tipoTurno[turnos[i]!.tipoTurno]">
-                            <mat-option value="afavor">A Favor</mat-option>
-                            <mat-option value="encontra">En Contra</mat-option>
-                            <mat-option value="neutro">Sin postura</mat-option>
-                        </mat-select>
-                    </mat-form-field-->
+                    <span class="tipo-turno">{{turnos[i]!.tipoTurno}}</span>
                 </h4>
                 <div class="campos">
                     <mat-form-field>
