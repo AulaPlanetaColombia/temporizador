@@ -16,14 +16,19 @@ export class TemporizadorComponent implements OnInit, OnChanges {
     segundos:string;
     paso:number = 0;
     conteo:number;
+    salida:string;
+    safari:Boolean;
     constructor(private tiempoFuera:MatSnackBar) {}
     ngOnInit() {
         this.conteo = this.tiempo;
         this.calculaTiempo();
+        this.salida = String(this.minutos) + ' : ' + String(this.segundos);
+        this.tipoBrowser();
     }
     ngOnChanges(changes:SimpleChanges) {
         this.conteo = this.tiempo;
         this.calculaTiempo();
+        this.salida = String(this.minutos) + ' : ' + String(this.segundos);
     }
     calculaTiempo() {
         this.minutos = this.dosDigitos(Math.floor(Math.abs(this.conteo) / 60));
@@ -38,6 +43,10 @@ export class TemporizadorComponent implements OnInit, OnChanges {
                 this.tiempoFuera.open('¡Tiempo fuera! ⏰','Cerrar',{duration:5000});
             }
             this.calculaTiempo();
+            this.salida = '';
+            window.setTimeout(()=>{
+                this.salida = String(this.minutos) + ' : ' + String(this.segundos);
+            });
             this.conteo--;
         });
     }
@@ -56,6 +65,20 @@ export class TemporizadorComponent implements OnInit, OnChanges {
             return '0' + String(num);
         } else {
             return String(num);
+        }
+    }
+    tipoBrowser() {
+        let chrome:Boolean = navigator.userAgent.indexOf('Chrome') > -1;
+        let ie:Boolean = navigator.userAgent.indexOf('MSIE') > -1 || navigator.userAgent.indexOf('rv:') > -1;
+        let firefox:Boolean = navigator.userAgent.indexOf('Firefox') > -1;
+        let safari:Boolean = navigator.userAgent.indexOf('Safari') > -1;
+        if ((chrome) && (safari)) safari = false;
+        let opera:Boolean = navigator.userAgent.indexOf('OP') > -1;
+        if ((chrome) && (opera)) chrome = false;
+        if (safari) {
+            this.safari = true;
+        } else {
+            this.safari = false;
         }
     }
 }
