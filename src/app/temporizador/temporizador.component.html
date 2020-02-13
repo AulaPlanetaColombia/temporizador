@@ -1,6 +1,7 @@
 <div class="cuerpo">
     <div class="temporizador">
-        <div class="tiempo" [ngClass]="{'negativo':(conteo < 0)?true:false}">{{minutos}} : {{segundos}}</div>
+        <div class="tiempo" [ngClass]="{'negativo':(conteo < 0)?true:false}" *ngIf="!safari">{{minutos}} : {{segundos}}</div>
+        <div class="tiempo" [ngClass]="{'negativo':(conteo < 0)?true:false}" *ngIf="safari">{{salida}}</div>
     </div>
     <div class="acciones">
         <div class="iniciar" *ngIf="paso === 0">
