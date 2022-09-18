@@ -1,58 +1,72 @@
 .header {
-    width: 100%;
-    margin: 0;
-    @media (max-width: 768px) { // Tablets
-        position: relative;
-        padding-bottom: 2rem;
-        .titulo {
-            font-size: 5vh;
-        }
-        .superior {
-            padding-top: 0;
-        }
-    }
-    @media (min-width: 769px) { // Desktop
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 40vh;
-        .titulo {
-            font-size: 5.5vh;
-            padding-top: 2vh;
-        }
-        .superior {
-            margin-top: 3vh;
-        }
-    }
-    background-color: #223656;
+  width: 100%;
+  margin: 0;
+  @media (max-width: 768px) {
+    // Tablets
+    position: relative;
+    padding-bottom: 2rem;
     .titulo {
-        color: #fff;
-        margin: 0 auto;
-        text-align: center;
+      font-size: 5vh;
     }
-    .fila {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        img {
-            margin: 0 3vw;
-        }
-        &.superior {
-            height: 10vh;
-            background-color: #fff;
-            img {
-                width: 17vw;
-            }
-        }
-        &.inferior {
-            height: 7vh;
-            margin-top: 5vh;
-            border-top: 1px solid #fff;
-            padding-top: 3vh;
-            img {
-                width: 14vw;
-            }
-        }
+    .superior {
+      padding-top: 0;
     }
+  }
+  @media (min-width: 769px) {
+    // Desktop
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 40vh;
+    .titulo {
+      font-size: 5.5vh;
+      padding-top: 2vh;
+    }
+    .superior {
+      margin-top: 3vh;
+    }
+  }
+  background-color: #223656;
+  .titulo {
+    color: #fff;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .fila {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      margin: 0 3vw;
+    }
+    &.superior {
+      height: 10vh;
+      background-color: #fff;
+      img {
+        width: 17vw;
+      }
+      .ligaDebate {
+        position: relative;
+        .numLiga {
+          position: absolute;
+          text-transform: uppercase;
+          top: 8px;
+          left: 117px;
+          font-size: 10px;
+          background-color: white;
+          font-weight: 900;
+        }
+      }
+    }
+    &.inferior {
+      height: 7vh;
+      margin-top: 5vh;
+      border-top: 1px solid #fff;
+      padding-top: 3vh;
+      img {
+        width: 14vw;
+      }
+    }
+  }
 }

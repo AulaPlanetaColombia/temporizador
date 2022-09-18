@@ -1,42 +1,42 @@
 [
     {
         "nombre": "Exposición Inicial",
-        "tiempo": 240,
+        "tiempo": 300,
         "tipoTurno": "afavor"
     },
     {
         "nombre": "Exposición Inicial",
+        "tiempo": 300,
+        "tipoTurno": "encontra"
+    },
+    {
+        "nombre": "Refutación 1",
+        "tiempo": 360,
+        "tipoTurno": "afavor"
+    },
+    {
+        "nombre": "Refutación 1",
+        "tiempo": 360,
+        "tipoTurno": "encontra"
+    },
+    {
+        "nombre": "Refutación 2",
+        "tiempo": 360,
+        "tipoTurno": "afavor"
+    },
+    {
+        "nombre": "Refutación 2",
+        "tiempo": 360,
+        "tipoTurno": "encontra"
+    },
+    {
+        "nombre": "Conclusión",
         "tiempo": 240,
         "tipoTurno": "encontra"
     },
     {
-        "nombre": "Refutación 1",
-        "tiempo": 300,
-        "tipoTurno": "afavor"
-    },
-    {
-        "nombre": "Refutación 1",
-        "tiempo": 300,
-        "tipoTurno": "encontra"
-    },
-    {
-        "nombre": "Refutación 2",
-        "tiempo": 300,
-        "tipoTurno": "afavor"
-    },
-    {
-        "nombre": "Refutación 2",
-        "tiempo": 300,
-        "tipoTurno": "encontra"
-    },
-    {
         "nombre": "Conclusión",
-        "tiempo": 180,
-        "tipoTurno": "encontra"
-    },
-    {
-        "nombre": "Conclusión",
-        "tiempo": 180,
+        "tiempo": 240,
         "tipoTurno": "afavor"
     }
 ]
