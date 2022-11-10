@@ -1,12 +1,12 @@
 [
     {
         "nombre": "Exposición Inicial",
-        "tiempo": 300,
+        "tiempo": 240,
         "tipoTurno": "afavor"
     },
     {
         "nombre": "Exposición Inicial",
-        "tiempo": 300,
+        "tiempo": 240,
         "tipoTurno": "encontra"
     },
     {
@@ -31,12 +31,12 @@
     },
     {
         "nombre": "Conclusión",
-        "tiempo": 240,
+        "tiempo": 180,
         "tipoTurno": "encontra"
     },
     {
         "nombre": "Conclusión",
-        "tiempo": 240,
+        "tiempo": 180,
         "tipoTurno": "afavor"
     }
 ]
